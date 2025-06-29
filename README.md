@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This package is abandoned and no longer maintained. The author suggests using the [gomzyakov/pint](https://github.com/gomzyakov/pint) package instead.
+
 # Code-style configuration for `php-cs-fixer`
 
 [![packagist](https://img.shields.io/packagist/v/gomzyakov/php-cs-fixer-config.svg)](https://packagist.org/packages/gomzyakov/php-cs-fixer-config)
