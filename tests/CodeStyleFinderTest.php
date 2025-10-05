@@ -1,15 +1,15 @@
 <?php
 
-use Gomzyakov\CS\Finder;
+use Gomzyakov\CodeStyleFinder;
 use PhpCsFixer\Finder as PhpCsFixerFinder;
 use PHPUnit\Framework\TestCase;
 
-class FinderTest extends TestCase
+class CodeStyleFinderTest extends TestCase
 {
     public function test_method_return_array()
     {
         $directory = __DIR__ . '/../src';
-        $finder    = Finder::createWithRoutes([$directory]);
+        $finder    = CodeStyleFinder::createWithRoutes([$directory]);
 
         $this->assertInstanceOf(PhpCsFixerFinder::class, $finder);
     }

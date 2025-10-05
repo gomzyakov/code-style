@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Gomzyakov\CS;
+namespace Gomzyakov;
 
 use function json_decode;
 
@@ -12,7 +12,7 @@ use function json_decode;
  * @see https://github.com/FriendsOfPHP/PHP-CS-Fixer
  * @see https://mlocati.github.io/php-cs-fixer-configurator/
  */
-class Rules
+class CodeStyleRules
 {
     /**
      * @param array<string, array<string, mixed>|bool> $overwritten_rules

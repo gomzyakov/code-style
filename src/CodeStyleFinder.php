@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
-namespace Gomzyakov\CS;
+namespace Gomzyakov;
 
 use PhpCsFixer\Finder as PhpCsFixerFinder;
 
-class Finder
+class CodeStyleFinder
 {
     /**
-     * Creates a new Finder.
+     * Creates a new CodeStyleFinder.
      *
      * @param array<string> $routes
      *

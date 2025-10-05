@@ -1,12 +1,9 @@
-> [!CAUTION]
-> This package is abandoned and no longer maintained. The author suggests using the [gomzyakov/pint](https://github.com/gomzyakov/pint) package instead.
-
 # Code-style configuration for `php-cs-fixer`
 
-[![packagist](https://img.shields.io/packagist/v/gomzyakov/php-cs-fixer-config.svg)](https://packagist.org/packages/gomzyakov/php-cs-fixer-config)
-[![downloads_count](https://img.shields.io/packagist/dt/gomzyakov/php-cs-fixer-config.svg)](https://packagist.org/packages/gomzyakov/php-cs-fixer-config)
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/gomzyakov/php-cs-fixer-config/blob/development/LICENSE)
-[![codecov](https://codecov.io/gh/gomzyakov/php-cs-fixer-config/branch/main/graph/badge.svg?token=4CYTVMVUYV)](https://codecov.io/gh/gomzyakov/php-cs-fixer-config)
+[![packagist](https://img.shields.io/packagist/v/gomzyakov/code-style.svg)](https://packagist.org/packages/gomzyakov/code-style)
+[![downloads_count](https://img.shields.io/packagist/dt/gomzyakov/code-style.svg)](https://packagist.org/packages/gomzyakov/code-style)
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/gomzyakov/code-style/blob/development/LICENSE)
+[![codecov](https://codecov.io/gh/gomzyakov/code-style/branch/main/graph/badge.svg?token=4CYTVMVUYV)](https://codecov.io/gh/gomzyakov/code-style)
 
 This package allows sharing identical [php-cs-fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) formatting rules across all of your projects without copy-and-pasting configuration files.
 
@@ -17,7 +14,7 @@ This package allows sharing identical [php-cs-fixer](https://github.com/PHP-CS-F
 Install [`friendsofphp/php-cs-fixer`](https://github.com/FriendsOfPHP/PHP-CS-Fixer) & this package via Composer:
 
 ```sh
-composer require --dev friendsofphp/php-cs-fixer gomzyakov/php-cs-fixer-config
+composer require --dev friendsofphp/php-cs-fixer gomzyakov/code-style
 ```
 
 ### Step 2 of 3
@@ -27,13 +24,13 @@ Then create file `.php-cs-fixer.dist.php` at the root of your project with follo
 ```php
 <?php
 
-use Gomzyakov\CS\Finder;
-use Gomzyakov\CS\Config;
+use Gomzyakov\CodeStyleFinder;
+use Gomzyakov\CodeStyleConfig;
 
 // Routes for analysis with `php-cs-fixer`
 $routes = ['./src', './tests'];
 
-return Config::createWithFinder(Finder::createWithRoutes($routes));
+return CodeStyleConfig::createWithFinder(CodeStyleFinder::createWithRoutes($routes));
 ```
 
 Change the value of `$routes` depending on where your project's source code is.
@@ -54,16 +51,16 @@ And then completely fix them all with:
 
 ## Configuration
 
-You must pass a set of routes to the `Finder::createWithRoutes()` call. For example, for [Laravel](https://laravel.com) projects, this would be:
+You must pass a set of routes to the `CodeStyleFinder::createWithRoutes()` call. For example, for [Laravel](https://laravel.com) projects, this would be:
 
 ```php
-Finder::createWithRoutes(['./app', './config', './database', './routes', './tests'])
+CodeStyleFinder::createWithRoutes(['./app', './config', './database', './routes', './tests'])
 ```
 
-Also, you can pass a custom set of rules to the `Config::createWithFinder()` call:
+Also, you can pass a custom set of rules to the `CodeStyleConfig::createWithFinder()` call:
 
 ```php
-Config::createWithFinder($finder, [
+CodeStyleConfig::createWithFinder($finder, [
     '@PHP81Migration'   => true,
     'array_indentation' => false
 ])
@@ -71,11 +68,11 @@ Config::createWithFinder($finder, [
 
 ## Support
 
-If you find any package errors, please, [make an issue](https://github.com/gomzyakov/php-cs-fixer-config/issues) in current repository.
+If you find any package errors, please, [make an issue](https://github.com/gomzyakov/code-style/issues) in current repository.
 
 ## License
 
-This is open-sourced software licensed under the [MIT License](https://github.com/gomzyakov/php-cs-fixer-config/blob/main/LICENSE).
+This is open-sourced software licensed under the [MIT License](https://github.com/gomzyakov/code-style/blob/main/LICENSE).
 
 ## Special thanks
 
