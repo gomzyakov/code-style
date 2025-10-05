@@ -7,6 +7,7 @@ namespace Gomzyakov;
 use PhpCsFixer\Config as PhpCsFixerConfig;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder as PhpCsFixerFinder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 class CodeStyleConfig
 {
@@ -21,6 +22,7 @@ class CodeStyleConfig
     public static function createWithFinder(PhpCsFixerFinder $finder, array $overwritten_rules = []): ConfigInterface
     {
         return (new PhpCsFixerConfig())
+            ->setParallelConfig(ParallelConfigFactory::detect())
             ->setFinder($finder)
             ->setRules(CodeStyleRules::getRules($overwritten_rules))
             ->setRiskyAllowed(false)
