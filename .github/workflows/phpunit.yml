@@ -8,45 +8,26 @@ on:
 
 jobs:
   test:
-    name: Test & Upload coverage.xml to Codecov
+    name: Run tests (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '8.3', '8.4' ]
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup PHP 8.3
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: ${{ matrix.php }}
           extensions: mbstring, pdo, sqlite, pdo_sqlite
           ini-values: max_execution_time=180
-
-      - name: Install PHP extensions
-        run: |
-          sudo apt update
-          sudo apt-get install -y php-phpdbg
 
       - name: Install Composer Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
       - name: Run tests via PHPUnit
-        env:
-          XDEBUG_MODE: coverage
-        run: |
-          vendor/bin/phpunit --coverage-clover=coverage.xml
-          cat ./coverage.xml
-
-      - name: Show coverage.xml
-        run: cat ./coverage.xml
-
-      - name: Upload coverage.xml to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml
-          fail_ci_if_error: true
-          flags: unittests
-          name: codecov-umbrella
-          verbose: true
-          env_vars: PHP
+        run: vendor/bin/phpunit

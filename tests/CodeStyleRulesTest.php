@@ -1,20 +1,20 @@
 <?php
 
-use Gomzyakov\CS\Rules;
+use Gomzyakov\CodeStyleRules;
 use PHPUnit\Framework\TestCase;
 
-class RulesTest extends TestCase
+class CodeStyleRulesTest extends TestCase
 {
     public function test_method_return_array()
     {
-        $rules = Rules::getRules();
+        $rules = CodeStyleRules::getRules();
 
         $this->assertIsArray($rules);
     }
 
     public function test_merge_overwritten_rules()
     {
-        $rules = Rules::getRules();
+        $rules = CodeStyleRules::getRules();
 
         // Check array-rule before replace
         $this->assertSame(
@@ -29,7 +29,7 @@ class RulesTest extends TestCase
         );
 
         $overwritten_rules = ['binary_operator_spaces' => ['default' => 'foo']];
-        $rules             = Rules::getRules($overwritten_rules);
+        $rules             = CodeStyleRules::getRules($overwritten_rules);
 
         // Check array-rule after replace
         $this->assertSame(

@@ -2,16 +2,17 @@
 
 declare(strict_types = 1);
 
-namespace Gomzyakov\CS;
+namespace Gomzyakov;
 
 use PhpCsFixer\Config as PhpCsFixerConfig;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder as PhpCsFixerFinder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
-class Config
+class CodeStyleConfig
 {
     /**
-     * Creates a new Config.
+     * Creates a new CodeStyleConfig.
      *
      * @param PhpCsFixerFinder                         $finder
      * @param array<string, array<string, mixed>|bool> $overwritten_rules
@@ -21,8 +22,9 @@ class Config
     public static function createWithFinder(PhpCsFixerFinder $finder, array $overwritten_rules = []): ConfigInterface
     {
         return (new PhpCsFixerConfig())
+            ->setParallelConfig(ParallelConfigFactory::detect())
             ->setFinder($finder)
-            ->setRules(Rules::getRules($overwritten_rules))
+            ->setRules(CodeStyleRules::getRules($overwritten_rules))
             ->setRiskyAllowed(false)
             ->setUsingCache(false);
     }
