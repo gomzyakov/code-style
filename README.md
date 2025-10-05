@@ -1,10 +1,5 @@
 # Code-style configuration for `php-cs-fixer`
 
-[![packagist](https://img.shields.io/packagist/v/gomzyakov/code-style.svg)](https://packagist.org/packages/gomzyakov/code-style)
-[![downloads_count](https://img.shields.io/packagist/dt/gomzyakov/code-style.svg)](https://packagist.org/packages/gomzyakov/code-style)
-[![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/gomzyakov/code-style/blob/development/LICENSE)
-[![codecov](https://codecov.io/gh/gomzyakov/code-style/branch/main/graph/badge.svg?token=4CYTVMVUYV)](https://codecov.io/gh/gomzyakov/code-style)
-
 This package allows sharing identical [php-cs-fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) formatting rules across all of your projects without copy-and-pasting configuration files.
 
 ## Quickstart
